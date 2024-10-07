@@ -22,7 +22,6 @@ import java.util.TreeMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 import java.util.jar.JarOutputStream;
-import java.util.jar.Pack200;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -31,6 +30,7 @@ import com.nothome.delta.GDiffPatcher;
 
 import lzma.sdk.lzma.Decoder;
 import lzma.streams.LzmaInputStream;
+import org.glavo.pack200.Pack200;
 
 public class Patcher {
     public static final String EXTENSION = ".lzma";

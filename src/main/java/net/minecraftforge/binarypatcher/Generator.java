@@ -26,14 +26,13 @@ import java.util.TreeSet;
 import java.util.Map.Entry;
 import java.util.jar.JarInputStream;
 import java.util.jar.JarOutputStream;
-import java.util.jar.Pack200;
-import java.util.jar.Pack200.Packer;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 import lzma.streams.LzmaOutputStream;
 import net.minecraftforge.srgutils.IMappingFile;
+import org.glavo.pack200.Pack200;
 
 public class Generator {
     public static final String EXTENSION = ".lzma";
@@ -213,12 +212,12 @@ public class Generator {
         try (JarInputStream in = new JarInputStream(new ByteArrayInputStream(data));
              ByteArrayOutputStream out = new ByteArrayOutputStream()) {
 
-            Packer packer = Pack200.newPacker();
+            Pack200.Packer packer = Pack200.newPacker();
 
             SortedMap<String, String> props = packer.properties();
-            props.put(Packer.EFFORT, "9");
-            props.put(Packer.KEEP_FILE_ORDER, Packer.TRUE);
-            props.put(Packer.UNKNOWN_ATTRIBUTE, Packer.PASS);
+            props.put(Pack200.Packer.EFFORT, "9");
+            props.put(Pack200.Packer.KEEP_FILE_ORDER, Pack200.Packer.TRUE);
+            props.put(Pack200.Packer.UNKNOWN_ATTRIBUTE, Pack200.Packer.PASS);
 
             final PrintStream err = new PrintStream(System.err);
             System.setErr(new PrintStream(NULL));
