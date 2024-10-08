@@ -28,8 +28,7 @@ import java.util.zip.ZipOutputStream;
 
 import com.nothome.delta.GDiffPatcher;
 
-import lzma.sdk.lzma.Decoder;
-import lzma.streams.LzmaInputStream;
+import org.apache.commons.compress.compressors.lzma.LZMACompressorInputStream;
 import org.glavo.pack200.Pack200;
 
 public class Patcher {
@@ -85,7 +84,7 @@ public class Patcher {
         log("Loading patches file: " + file);
 
         try (InputStream input = new FileInputStream(file)) {
-            InputStream stream = new LzmaInputStream(input, new Decoder());
+            InputStream stream = new LZMACompressorInputStream(input);
 
             if (pack200) {
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();

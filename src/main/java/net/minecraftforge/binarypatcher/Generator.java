@@ -30,8 +30,8 @@ import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import lzma.streams.LzmaOutputStream;
 import net.minecraftforge.srgutils.IMappingFile;
+import org.apache.commons.compress.compressors.lzma.LZMACompressorOutputStream;
 import org.glavo.pack200.Pack200;
 
 public class Generator {
@@ -235,7 +235,7 @@ public class Generator {
     // public for testing
     public byte[] lzma(byte[] data) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        try (LzmaOutputStream lzma = new LzmaOutputStream.Builder(out).useEndMarkerMode(true).build()) {
+        try (LZMACompressorOutputStream lzma = new LZMACompressorOutputStream(out)) {
             lzma.write(data);
         }
         byte[] ret = out.toByteArray();
