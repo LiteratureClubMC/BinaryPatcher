@@ -31,4 +31,5 @@ dependencies {
     implementation("net.sf.jopt-simple:jopt-simple:5.0.4")
     implementation("org.apache.commons:commons-compress:1.27.1")
     implementation("com.nothome:javaxdelta:2.0.1")
+    implementation("org.tukaani:xz:1.10")
 }
