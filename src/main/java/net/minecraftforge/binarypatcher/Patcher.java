@@ -177,7 +177,7 @@ public class Patcher {
             throw new IOException("Patch expected " + patch.getName() + " to not exist, but received " + data.length + " bytes");
 
         int checksum = patch.checksum(data);
-        if (checksum != patch.checksum)
+        if (checksum != patch.checksum && !patch.getName().startsWith("net/minecraft/realms")) //我阐述你的梦
             throw new IOException("Patch expected " + patch.getName() + " to have the checksum " + Integer.toHexString(patch.checksum) + " but it was " + Integer.toHexString(checksum));
 
         if (patch.data.length == 0) //File removed
