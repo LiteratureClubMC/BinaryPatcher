@@ -171,6 +171,8 @@ public class Patcher {
     }
 
     private byte[] patch(byte[] data, Patch patch) throws IOException {
+        if(patch.getName().startsWith("net/minecraft/realms"))
+            return EMPTY_DATA;
         if (patch.exists && data.length == 0)
             throw new IOException("Patch expected " + patch.getName() + " to exist, but received empty data");
         if (!patch.exists && data.length > 0)
